@@ -14,6 +14,12 @@ BOT_NAME = 'brasileirao'
 SPIDER_MODULES = ['brasileirao.spiders']
 NEWSPIDER_MODULE = 'brasileirao.spiders'
 
+ITEM_PIPELINES = {'brasileirao.pipelines.MongoDBPipeline':300, }
+
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "live-football"
+MONGODB_COLLECTION = "games"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:39.0) Gecko/20100101 Firefox/39.0'
