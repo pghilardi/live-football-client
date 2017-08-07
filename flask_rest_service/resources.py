@@ -21,8 +21,7 @@ class Game(Resource):
 class Root(Resource):
     def get(self):
         return {
-            'status': 'OK',
-            'mongo': "",
+            'status': 'OK'
         }
 
 api.add_resource(Root, '/')

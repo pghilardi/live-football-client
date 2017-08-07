@@ -33,6 +33,6 @@ class ResultsSpider(scrapy.Spider):
                 item['date'] = game.css(".info-partida time::attr(datetime)").extract_first()
 
                 id = item['home_team'] + item['away_team']
-                item['id'] = hashlib.md5(id).hexdigest()
+                item['id'] = hashlib.md5(id.encode("utf-8")).hexdigest()
 
                 yield item
