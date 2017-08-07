@@ -13,7 +13,7 @@ from scrapy import log
 import os
 
 MONGODB_SERVER     = os.environ.get('MONGODB_SERVER') or settings['MONGODB_SERVER']
-MONGODB_PORT       = os.environ.get('MONGODB_PORT') or settings['MONGODB_PORT']
+MONGODB_PORT       = int(os.environ.get('MONGODB_PORT') or settings['MONGODB_PORT'])
 MONGODB_DB         = os.environ.get('MONGODB_DB') or settings['MONGODB_DB']
 MONGODB_COLLECTION = os.environ.get('MONGODB_COLLECTION') or settings['MONGODB_COLLECTION']
 
