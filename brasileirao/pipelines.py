@@ -27,6 +27,6 @@ class MongoDBPipeline(object):
                 raise DropItem("Missing data!")
 
         self.collection.update({'id': item['id']}, dict(item), upsert=True)
-        log.msg("Question added to MongoDB database!", level=log.DEBUG, spider=spider)
+        log.msg("Game added to MongoDB database!", level=log.DEBUG, spider=spider)
 
         return item
