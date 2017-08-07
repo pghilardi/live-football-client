@@ -22,7 +22,7 @@ class Root(Resource):
     def get(self):
         return {
             'status': 'OK',
-            'mongo': mongo.db,
+            'mongo': "",
         }
 
 api.add_resource(Root, '/')
