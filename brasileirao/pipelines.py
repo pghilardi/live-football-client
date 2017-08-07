@@ -10,16 +10,22 @@ import pymongo
 from scrapy.conf import settings
 from scrapy.exceptions import DropItem
 from scrapy import log
+import os
+
+MONGODB_SERVER     = os.environ.get('MONGODB_SERVER') or settings['MONGODB_SERVER']
+MONGODB_PORT       = os.environ.get('MONGODB_PORT') or settings['MONGODB_PORT']
+MONGODB_DB         = os.environ.get('MONGODB_DB') or settings['MONGODB_DB']
+MONGODB_COLLECTION = os.environ.get('MONGODB_COLLECTION') or settings['MONGODB_COLLECTION']
 
 class MongoDBPipeline(object):
     def __init__(self):
         connection = pymongo.MongoClient(
-            settings['MONGODB_SERVER'],
-            settings['MONGODB_PORT']
+            MONGODB_SERVER,
+            MONGODB_PORT
         )
 
-        db = connection[settings['MONGODB_DB']]
-        self.collection = db[settings['MONGODB_COLLECTION']]
+        db = connection[MONGODB_DB]
+        self.collection = db[MONGODB_COLLECTION]
 
     def process_item(self, item, spider):
         for data in item:
