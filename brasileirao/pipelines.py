@@ -12,17 +12,13 @@ from scrapy.exceptions import DropItem
 from scrapy import log
 import os
 
-MONGODB_SERVER     = os.environ.get('MONGODB_SERVER') or settings['MONGODB_SERVER']
-MONGODB_PORT       = int(os.environ.get('MONGODB_PORT') or settings['MONGODB_PORT'])
+MONGODB_URI        = os.environ.get('MONGODB_URI') or settings['MONGODB_URI']
 MONGODB_DB         = os.environ.get('MONGODB_DB') or settings['MONGODB_DB']
 MONGODB_COLLECTION = os.environ.get('MONGODB_COLLECTION') or settings['MONGODB_COLLECTION']
 
 class MongoDBPipeline(object):
     def __init__(self):
-        connection = pymongo.MongoClient(
-            MONGODB_SERVER,
-            MONGODB_PORT
-        )
+        connection = pymongo.MongoClient(MONGODB_URI)
 
         db = connection[MONGODB_DB]
         self.collection = db[MONGODB_COLLECTION]
