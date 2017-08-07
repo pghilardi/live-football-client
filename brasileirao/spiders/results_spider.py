@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import scrapy
 
 import scrapy.selector
@@ -23,8 +25,8 @@ class ResultsSpider(scrapy.Spider):
 
                 item = BrasileiraoItem()
                 item['rodada'] = actual_round
-                item['home_team'] = home_team.css("abbr::attr(title)").extract_first().encode('utf8')
-                item['away_team'] = away_team.css("abbr::attr(title)").extract_first().encode('utf8')
+                item['home_team'] = home_team.css("abbr::attr(title)").extract_first()
+                item['away_team'] = away_team.css("abbr::attr(title)").extract_first()
                 item['home_score'] = home_team.css(".gols::text").extract_first()
                 item['away_score'] = away_team.css(".gols::text").extract_first()
 
